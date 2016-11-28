@@ -439,8 +439,8 @@
         function aprovar(lancamento) {
             var _modal = $uibModal.open({
                 animation: true,
-                templateUrl: '/app/aprovacao/aprovacao.view.confirmaraprovacao.html',
-                controller: 'ConfirmarAprovacaoController',
+                templateUrl: 'views/aprovacao.view.confirmaraprovacao.html',
+                controller: 'ConfirmarAprovacaoCtrl',
                 controllerAs: 'ctrl',
                 resolve: {
                     lancamento: function () {
@@ -457,8 +457,8 @@
         function reprovar(lancamento) {
             var _modal = $uibModal.open({
                 animation: true,
-                templateUrl: '/app/aprovacao/aprovacao.view.confirmarreprovacao.html',
-                controller: 'ConfirmarReprovacaoController',
+                templateUrl: 'views/aprovacao.view.confirmarreprovacao.html',
+                controller: 'ConfirmarReprovacaoCtrl',
                 controllerAs: 'ctrl',
                 resolve: {
                     lancamento: function () {
@@ -466,14 +466,18 @@
                     }
                 }
             }).result.then(confirmado, dispensado);
+
+            function confirmado(resultado) { }
+
+            function dispensado() { }
         }
 
         function solicitarExcedentes(lancamento, responsaveis) {
             
             var _modal = $uibModal.open({
                 animation: true,
-                templateUrl: '/app/aprovacao/aprovacao.view.solicitarexcedentes.html',
-                controller: 'SolicitarExcedenteController',
+                templateUrl: 'views/aprovacao.view.solicitarexcedentes.html',
+                controller: 'SolicitarExcedenteCtrl',
                 controllerAs: 'ctrl',
                 resolve: {
                     lancamento: function () {

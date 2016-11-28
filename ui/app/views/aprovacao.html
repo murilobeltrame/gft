@@ -146,7 +146,7 @@
                             <tr data-ng-class="{warning:Lancamento.Excedente, italico:!ctrl.NoPeriodo(Lancamento, ctrl.PeriodoAtual)}">
                                 <td>
                                     <button class="btn btn-link" style="color:black; padding:0;"
-                                            uib-popover-template="'/app/aprovacao/aprovacao.view.erroprocessamento.html'"
+                                            uib-popover-template="'views/aprovacao.view.erroprocessamento.html'"
                                             popover-placement="auto top-left"
                                             data-ng-if="Lancamento.Erro">
                                         <span class="fa fa-exclamation-triangle"></span>
@@ -154,7 +154,7 @@
                                 </td>
                                 <td nowrap>
                                     <button class="btn btn-link" style="color:black;float:right; padding:0; margin:0"
-                                            uib-popover-template="'/app/aprovacao/aprovacao.view.terceiro.html'"
+                                            uib-popover-template="'views/aprovacao.view.terceiro.html'"
                                             popover-placement="auto top-left">
                                         <span class="fa fa-question-circle-o"></span>
                                     </button>
@@ -162,7 +162,7 @@
                                 </td>
                                 <td nowrap>
                                     <button class="btn btn-link" style="color:black;float:right; padding:0; margin:0"
-                                            uib-popover-template="'/app/aprovacao/aprovacao.view.unidade.html'"
+                                            uib-popover-template="'views/aprovacao.view.unidade.html'"
                                             popover-placement="auto top-left">
                                         <span class="fa fa-question-circle-o"></span>
                                     </button>
@@ -280,7 +280,7 @@
                                 </td>
                                 <td nowrap>
                                     <span style="float:right; margin-top:3px" class="fa fa-question-circle-o"
-                                          uib-popover-template="app/aprovacao/aprovacao.view.consultor.template.html"
+                                          uib-popover-template="views/aprovacao.view.consultor.template.html"
                                           popover-title="{{dynamicPopover.title}}"></span>
                                     {{Lancamento.Unidade.Nome|limitTo:23}}
                                 </td>

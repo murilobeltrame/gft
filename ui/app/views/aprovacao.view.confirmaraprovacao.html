@@ -1,0 +1,28 @@
+﻿<div class="panel panel-success" style="margin-bottom:0">
+    <div class="panel-heading">Confirmação</div>
+    <div class="panel-body">
+        Confirmar aprovação do apontamento?
+        <div class="panel panel-default" style="margin-top:10px;">
+            <div class="panel-body">
+                <p><strong>{{ctrl.Lancamento.Terceiro.Nome}}</strong></p>
+                <p>{{ctrl.Lancamento.Unidade.Nome}} ({{ctrl.Lancamento.Unidade.SAP}})</p>
+                <p>{{ctrl.Lancamento.CentroCusto}}</p>
+                <p>{{ctrl.Lancamento.Data|date:'MM/yyyy'}} <strong>{{ctrl.Lancamento.Data|date:'HH:mm'}}</strong></p>
+            </div>
+        </div>
+        <div class="pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"
+                        data-ng-click="ctrl.Cancelar()">
+                    <span class="fa fa-times"></span>
+                    Não
+                </button>
+                <button type="button" class="btn btn-success"
+                        data-ng-click="ctrl.Ok()">
+                    <span class="fa fa-check"></span>
+                    Sim
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

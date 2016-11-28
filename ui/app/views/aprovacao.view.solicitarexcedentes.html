@@ -1,0 +1,80 @@
+﻿<div class="panel panel-warning" style="margin-bottom:0">
+    <div class="panel-heading">Solicitação de Excedentes</div>
+    <div class="panel-body">
+        Confirmar reprovação do apontamento?
+        <div class="panel panel-default" style="margin-top:10px;">
+            <div class="panel-body">
+                <fieldset><legend>Dados do Prestador</legend>
+                    <!--Terceiro-->
+                    <!--<p><span class="fa fa-user"></span> <strong>{{ctrl.Lancamento.Terceiro.Nome}}</strong></p>-->
+                    <div class="form-group">
+                        <label>Terceiro</label>
+                        <input type="text" class="form-control" readonly data-ng-model="ctrl.Solicitacao.Lancamento.Terceiro.Nome"/>
+                    </div>
+                    <!--Responsavel-->
+                    <!--<p><strong><span class="fa fa-shield"></span> </strong>{{ctrl.Lancamento.Responsavel.Nome}}</p>-->
+                    <div class="form-group">
+                        <label>Responsável</label>
+                        <input type="text" class="form-control" readonly data-ng-model="ctrl.Solicitacao.Lancamento.Responsavel.Nome" />
+                    </div>                
+                </fieldset>
+                <fieldset><legend>Solicitação</legend>
+                    <!--Aprovador-->
+                    <!--<select data-ng-model="ctrl.Solicitacao.Responsavel" data-ng-options="Responsavel.Nome for Responsavel in ctrl.Responsaveis"></select>-->
+                    <div class="form-group">
+                        <label>Aprovador</label>
+                        <select class="form-control" data-ng-model="ctrl.Solicitacao.Responsavel" data-ng-options="Responsavel.Nome for Responsavel in ctrl.Responsaveis"></select>
+                    </div>
+                    <!--Solicitante-->                    
+                    <!--<p><span class="fa fa-user"></span> <strong>Bruno Roberto Terossi</strong></p>-->
+                    <div class="form-group">
+                        <label>Solicitante</label>
+                        <input type="text" class="form-control" readonly data-ng-model="ctrl.Solicitacao.Solicitante.Nome" />
+                    </div>
+                    <div class="row">
+                        <!--Data-->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Data</label>
+                                <input type="date" class="form-control" data-ng-model="ctrl.Solicitacao.Data" />
+                            </div>
+                        </div>
+                        <!--Hora-->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Hora</label>
+                                <input type="text" class="form-control" data-ng-model="ctrl.Solicitacao.Hora" />
+
+                            </div>
+                        </div>
+                        <!--Minuto-->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Minuto</label>
+                                <input type="text" class="form-control" data-ng-model="ctrl.Solicitacao.Minuto" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Justificativa</label>
+                        <textarea type="text" rows="4" maxlength="2000" class="form-control" data-ng-model="ctrl.Solicitacao.Justificativa" />
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"
+                        data-ng-click="ctrl.Cancelar()">
+                    <span class="fa fa-times"></span>
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-warning"
+                        data-ng-click="ctrl.Ok()">
+                    <span class="fa fa-check"></span>
+                    Solicitar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
