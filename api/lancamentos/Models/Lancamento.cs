@@ -2,7 +2,7 @@ using System;
 
 namespace GFT.API.Lancamentos.Models
 {
-    public class Lancamentos
+    public class Lancamento
     {
         public Prestador Prestador { get; set; }
         public Requisicao Requisicao{get;set;}
