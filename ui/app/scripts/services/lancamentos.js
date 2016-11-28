@@ -8,16 +8,19 @@
  * Factory in the gftApp.
  */
 angular.module('gftApp')
-  .factory('Lancamentos', function () {
-    // Service logic
-    // ...
+  .factory('Lancamentos', ['$http','appSettings',function ($http, appSettings) {
+    
+    var _url = appSettings.LancamentoAPI + '/lancamentos';
+    
+    var _get = function(query){
+      var _queryUrl = _url;
+      if (query) { _queryUrl = _queryUrl + '/' + query; }
+      return $http.get(_queryUrl)
+        .then(function(resultados){ return resultados; })
+        .catch(function(erro){});
+    }
 
-    var meaningOfLife = 42;
-
-    // Public API here
     return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+      get: _get
     };
-  });
+  }]);

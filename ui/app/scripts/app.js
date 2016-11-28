@@ -23,7 +23,7 @@
       'ui.bootstrap'
     ])
     .value('appSettings',{
-      LancamentoAPI:'',
+      LancamentoAPI:'http://localhost:5000/api',
       CentroCustoAPI:'',
       GradeAPI:''
     })
@@ -39,4 +39,4 @@
         });
     });
 
-}());
+}(window.angular));

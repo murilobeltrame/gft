@@ -20,6 +20,13 @@
 
     'use strict';
 
+    /**
+     * @ngdoc function
+     * @name gftApp.controller:AprovacaoCtrl
+     * @description
+     * # AprovacaoCtrl
+     * Controller of the gftApp
+     */
     angular
         .module('gftApp')
         .controller('AprovacaoCtrl', AprovacaoController)
@@ -27,9 +34,9 @@
         .controller('ConfirmarReprovacaoCtrl', ConfirmarReprovacaoController)
         .controller('SolicitarExcedenteCtrl', SolicitarExcedenteController);
 
-    AprovacaoController.$inject = ['$uibModal'];
+    AprovacaoController.$inject = ['$uibModal', 'Lancamentos'];
 
-    function AprovacaoController($uibModal) {
+    function AprovacaoController($uibModal,Lancamentos) {
 
         var _vm = this;
 
@@ -396,6 +403,14 @@
         _vm.Reprovar = reprovar;
         _vm.SolicitarExcedentes = solicitarExcedentes;
         _vm.CentroCustoValido = centroCustoValido;
+
+        run();
+
+        function run(){
+            Lancamentos.get().then(function(resultado){
+                _vm.Lancamentos = resultado.data;
+            })
+        }
 
         function centroCustoValido(centroCusto, Unidade) {
             return false;
