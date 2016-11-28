@@ -1,0 +1,395 @@
+<div class="container>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Aprovação de Horas</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!--<form class="form-horizontal">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <fieldset>
+                                <legend>Dados do Prestador</legend>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Responsável</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                data-ng-model="Filtro.ResponsavelPrestador"
+                                                data-ng-options="Responsavel.Nome for Responsavel in ctrl.Responsaveis">
+                                            <option value="">(Todos)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Consultoria</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                data-ng-model="Filtro.Consultoria"
+                                                data-ng-options="Consultoria.Nome for Consultoria in ctrl.Consultorias">
+                                            <option value="">(Todas)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Terceiro</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                data-ng-model="Filtro.Terceiro"
+                                                data-ng-options="Terceiro.Nome for Terceiro in ctrl.Terceiros">
+                                            <option value="">(Todos)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-4">
+                            <fieldset>
+                                <legend>Responsável e Unidade</legend>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Unidade</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                data-ng-model="Filtro.Unidade"
+                                                data-ng-options="Unidade.Nome for Unidade in ctrl.Unidades">
+                                            <option value="">(Todas)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">CC/PEP/OI</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Responsável</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                data-ng-model="Filtro.ResponsavelUnidade"
+                                                data-ng-options="Responsavel.Nome for Responsavel in ctrl.Responsaveis">
+                                            <option value="">(Todos)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-4">
+                            <fieldset>
+                                <legend>Período</legend>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Mês</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                data-ng-model="Filtro.Periodo"
+                                                data-ng-options="(Periodo.Inicio|date:'MM/yyyy') for Periodo in ctrl.Periodos">
+                                            <option value="">(Todos)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Status</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                data-ng-model="Filtro.Status"
+                                                data-ng-options="Status.Descricao for Status in ctrl.Status">
+                                            <option value="">(Todos)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">
+                                        <span class="fa fa-eraser"></span>
+                                        Limpar
+                                    </button>
+                                    <button type="button" class="btn btn-primary">
+                                        <span class="fa fa-check"></span>
+                                        Pesquisar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>-->
+            <input type="text" class="form-control" placeholder="Pesquisar por ..."
+                   data-ng-model="Filtro">
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px;">
+        <div class="col-md-12">
+            <uib-tabset>
+                <uib-tab heading="Lançamentos Consolidados">
+                    <table class="table table-hover table-condensed" style="margin-top:10px">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Terceiro</th>
+                                <th>Unidade</th>
+                                <th>CC/PEP/OI</th>
+                                <th>Grade</th>
+                                <th>Período</th>
+                                <th>Total Mês</th>
+                                <th>Acesso</th>
+                                <th>Apontamento</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-repeat="Lancamento in ctrl.Lancamentos">
+                            <tr data-ng-class="{warning:Lancamento.Excedente, italico:!ctrl.NoPeriodo(Lancamento, ctrl.PeriodoAtual)}">
+                                <td>
+                                    <button class="btn btn-link" style="color:black; padding:0;"
+                                            uib-popover-template="'/app/aprovacao/aprovacao.view.erroprocessamento.html'"
+                                            popover-placement="auto top-left"
+                                            data-ng-if="Lancamento.Erro">
+                                        <span class="fa fa-exclamation-triangle"></span>
+                                    </button>
+                                </td>
+                                <td nowrap>
+                                    <button class="btn btn-link" style="color:black;float:right; padding:0; margin:0"
+                                            uib-popover-template="'/app/aprovacao/aprovacao.view.terceiro.html'"
+                                            popover-placement="auto top-left">
+                                        <span class="fa fa-question-circle-o"></span>
+                                    </button>
+                                    {{Lancamento.Terceiro.Nome|limitTo:21}}
+                                </td>
+                                <td nowrap>
+                                    <button class="btn btn-link" style="color:black;float:right; padding:0; margin:0"
+                                            uib-popover-template="'/app/aprovacao/aprovacao.view.unidade.html'"
+                                            popover-placement="auto top-left">
+                                        <span class="fa fa-question-circle-o"></span>
+                                    </button>
+                                    {{Lancamento.Unidade.Nome|limitTo:21}}
+                                </td>
+                                <td>
+                                    <div data-ng-class="{'has-error':!CentroCustoValido(Lancamento.CentroCusto,Lancamento.Unidade)}">
+                                        <input type="text" class="form-control" 
+                                               data-ng-model="Lancamento.CentroCusto"
+                                               uib-typeahead="CentroCusto.Codigo as (CentroCusto.Codigo + ' (' + CentroCusto.Unidade.Nome + ' ' + CentroCusto.Unidade.SAP+')') for CentroCusto in ctrl.CentrosCusto" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <select class="form-control"
+                                            data-ng-model="Lancamento.Grade"
+                                            data-ng-options="Grade for Grade in Lancamento.Responsavel.Grades">
+                                    </select>
+                                </td>
+                                <td>{{Lancamento.Data|date:'MM/yyyy'}}</td>
+                                <td>{{Lancamento.Data|date:'HH:mm'}}</td>
+                                <td>{{Lancamento.Data|date:'HH:mm'}}</td>
+                                <td>{{Lancamento.Data|date:'HH:mm'}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-default"
+                                                uib-tooltip="Voltar ao Status anterior">
+                                            <span class="fa fa-reply"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger"
+                                                uib-tooltip="Reprovar"
+                                                data-ng-click="ctrl.Reprovar(Lancamento)">
+                                            <span class="fa fa-times"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-warning"
+                                                uib-tooltip="Solicitar Adicional"
+                                                data-ng-if="Lancamento.Excedente"
+                                                data-ng-click="ctrl.SolicitarExcedentes(Lancamento, ctrl.Responsaveis)">
+                                            <span class="fa fa-calendar-plus-o"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-success"
+                                                uib-tooltip="Aprovar"
+                                                data-ng-if="!Lancamento.Excedente"
+                                                data-ng-click="ctrl.Aprovar(Lancamento)">
+                                            <span class="fa fa-check"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="12">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="pull-left">
+                                                <p>Exibindo 1 a 10 de 34</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="pull-right">
+                                                <nav>
+                                                    <ul class="pagination pagination-sm">
+                                                        <li>
+                                                            <span>
+                                                                <span>&laquo;</span>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>1</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>2</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <span>&raquo;</span>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </uib-tab>
+                <uib-tab heading="Lançamentos Detalhados">
+                    <table class="table table-hover table-condensed" style="margin-top:10px">
+                        <thead>
+                            <tr>
+                                <th>Terceiro</th>
+                                <th>Unidade</th>
+                                <th>CC/PEP/OI</th>
+                                <th>Grade</th>
+                                <th>Período</th>
+                                <th>Total Mês</th>
+                                <th>Acesso</th>
+                                <th>Apontamento</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-repeat="Lancamento in ctrl.Lancamentos">
+                            <tr data-ng-class="{warning:Lancamento.Excedente, italico:!ctrl.NoPeriodo(Lancamento, ctrl.PeriodoAtual)}">
+                                <td nowrap>
+                                    <span style="float:right; margin-top:3px" class="fa fa-question-circle-o"
+                                          uib-popover-template="dynamicPopover.templateUrl"
+                                          popover-title="{{dynamicPopover.title}}"
+                                          popover-trigger="'mouseenter'"></span>
+                                    {{Lancamento.Terceiro.Nome|limitTo:23}}
+                                </td>
+                                <td nowrap>
+                                    <span style="float:right; margin-top:3px" class="fa fa-question-circle-o"
+                                          uib-popover-template="app/aprovacao/aprovacao.view.consultor.template.html"
+                                          popover-title="{{dynamicPopover.title}}"></span>
+                                    {{Lancamento.Unidade.Nome|limitTo:23}}
+                                </td>
+                                <td>
+                                    <div class="has-error">
+                                        <input type="text" class="form-control" data-ng-model="Lancamento.CentroCusto" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <select class="form-control"></select>
+                                </td>
+                                <td>{{Lancamento.Data|date:'MM/yyyy'}}</td>
+                                <td>{{Lancamento.Data|date:'HH:mm'}}</td>
+                                <td>{{Lancamento.Data|date:'HH:mm'}}</td>
+                                <td>{{Lancamento.Data|date:'HH:mm'}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-default"
+                                                uib-tooltip="Voltar ao Status anterior">
+                                            <span class="fa fa-reply"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger"
+                                                uib-tooltip="Reprovar"
+                                                data-ng-click="ctrl.Reprovar(Lancamento)">
+                                            <span class="fa fa-times"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-warning"
+                                                uib-tooltip="Solicitar Adicional"
+                                                data-ng-if="Lancamento.Excedente"
+                                                data-ng-click="ctrl.SolicitarExcedentes(Lancamento)">
+                                            <span class="fa fa-calendar-plus-o"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-success"
+                                                uib-tooltip="Aprovar"
+                                                data-ng-if="!Lancamento.Excedente"
+                                                data-ng-click="ctrl.Aprovar(Lancamento)">
+                                            <span class="fa fa-check"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="12">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="pull-left">
+                                                <p>Exibindo 1 a 10 de 34</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="pull-right">
+                                                <nav>
+                                                    <ul class="pagination pagination-sm">
+                                                        <li>
+                                                            <span>
+                                                                <span>&laquo;</span>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>1</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>2</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <span>&raquo;</span>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </uib-tab>
+                <uib-tab heading="Acompanhamento Diário" disable="true"></uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px;">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+</div>
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="pull-right">
+                <button class="btn btn-sm btn-default navbar-btn">
+                    <span class="fa fa-save"></span>
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </nav>
+</footer>
+<script type="text/ng-template" id="DetalhesTerceiro.html">
+    <div>
+        <strong>Oi</strong>
+        <!--{{Lancamento.Terceiro.Nome}}-->
+    </div>
+</script>

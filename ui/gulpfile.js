@@ -212,7 +212,7 @@ gulp.task('copy:extras', function () {
 });
 
 gulp.task('copy:fonts', function () {
-  return gulp.src('./bower_components/bootstrap/dist/fonts/**/*')
+  return gulp.src(['./bower_components/bootstrap/dist/fonts/**/*', './bower_components/font-awesome/fonts/**/*'])
     .pipe(gulp.dest(yeoman.dist + '/fonts'));
 });
 
