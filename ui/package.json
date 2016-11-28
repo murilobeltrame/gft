@@ -37,6 +37,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "start" : "gulp serve:prod",
     "test": "karma start test/karma.conf.js"
   }
 }
