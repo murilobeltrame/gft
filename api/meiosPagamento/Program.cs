@@ -20,9 +20,13 @@ namespace meiosPagamento
 
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
-                .UseKestrel()
+                .UseKestrel(options => {
+                    options.NoDelay = true;
+                    options.UseConnectionLogging();
+                })
+                .UseUrls("http://0.0.0.0:8080", "https://0.0.0.0:8081")
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+                //.UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
 
