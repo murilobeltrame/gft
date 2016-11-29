@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -38,23 +34,6 @@ namespace meiosPagamento
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            app.Run(async context =>
-            {
-                Console.WriteLine("{0} {1}{2}{3}",
-                    context.Request.Method,
-                    context.Request.PathBase,
-                    context.Request.Path,
-                    context.Request.QueryString);
-                Console.WriteLine($"Method: {context.Request.Method}");
-                Console.WriteLine($"PathBase: {context.Request.PathBase}");
-                Console.WriteLine($"Path: {context.Request.Path}");
-                Console.WriteLine($"QueryString: {context.Request.QueryString}");
-
-                var connectionFeature = context.Connection;
-                Console.WriteLine($"Peer: {connectionFeature.RemoteIpAddress?.ToString()} {connectionFeature.RemotePort}");
-                Console.WriteLine($"Sock: {connectionFeature.LocalIpAddress?.ToString()} {connectionFeature.LocalPort}");
-            });
 
             app.UseCors(builder=>builder.WithOrigins("*"));
             app.UseMvc();

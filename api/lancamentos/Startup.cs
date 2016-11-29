@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
 
 namespace lancamentos
 {
@@ -36,23 +34,6 @@ namespace lancamentos
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            app.Run(async context =>
-            {
-                Console.WriteLine("{0} {1}{2}{3}",
-                    context.Request.Method,
-                    context.Request.PathBase,
-                    context.Request.Path,
-                    context.Request.QueryString);
-                Console.WriteLine($"Method: {context.Request.Method}");
-                Console.WriteLine($"PathBase: {context.Request.PathBase}");
-                Console.WriteLine($"Path: {context.Request.Path}");
-                Console.WriteLine($"QueryString: {context.Request.QueryString}");
-
-                var connectionFeature = context.Connection;
-                Console.WriteLine($"Peer: {connectionFeature.RemoteIpAddress?.ToString()} {connectionFeature.RemotePort}");
-                Console.WriteLine($"Sock: {connectionFeature.LocalIpAddress?.ToString()} {connectionFeature.LocalPort}");
-            });
 
             app.UseCors(builder=>builder.WithOrigins("*"));
             app.UseMvc();
