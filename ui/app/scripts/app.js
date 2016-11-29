@@ -24,7 +24,7 @@
     ])
     .value('appSettings',{
       LancamentoAPI:'http://localhost:5000/api',
-      CentroCustoAPI:'',
+      MeiosPagamentoAPI:'http://localhost:5000/api',
       GradeAPI:''
     })
     .config(function ($routeProvider) {

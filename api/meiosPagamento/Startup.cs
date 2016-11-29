@@ -1,10 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace lancamentos
+namespace meiosPagamento
 {
     public class Startup
     {
@@ -34,6 +38,7 @@ namespace lancamentos
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
             app.UseCors(builder=>builder.WithOrigins("*"));
             app.UseMvc();
         }
