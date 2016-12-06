@@ -2,15 +2,14 @@
 
 /**
  * @ngdoc service
- * @name gftApp.Lancamentos
+ * @name gftApp.grades
  * @description
- * # Lancamentos
+ * # grades
  * Factory in the gftApp.
  */
 angular.module('gftApp')
-  .factory('lancamentos', ['$http','appSettings',function ($http, appSettings) {
-    
-    var _url = appSettings.LancamentoAPI + '/lancamentos';
+  .factory('grades', ['$http','appSettings',function ($http, appSettings) {
+    var _url = appSettings.GradeAPI + '/grades';
     
     var _get = function(query){
       var _queryUrl = _url;

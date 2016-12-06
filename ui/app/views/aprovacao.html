@@ -178,7 +178,7 @@
                                 <td>
                                     <select class="form-control"
                                             data-ng-model="Lancamento.Grade"
-                                            data-ng-options="Grade for Grade in Lancamento.Responsavel.Grades">
+                                            data-ng-options="grade.sgGrade for grade in ctrl.Grades">
                                     </select>
                                 </td>
                                 <td>{{Lancamento.Data|date:'MM/yyyy'}}</td>
@@ -290,7 +290,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <select class="form-control"></select>
+                                    <!--<select class="form-control"></select>-->
+                                    <select class="form-control"
+                                            data-ng-model="Lancamento.Grade"
+                                            data-ng-options="grade.sgGrade for grade in ctrl.Grades">
+                                    </select>
                                 </td>
                                 <td>{{Lancamento.Data|date:'MM/yyyy'}}</td>
                                 <td>{{Lancamento.Data|date:'HH:mm'}}</td>

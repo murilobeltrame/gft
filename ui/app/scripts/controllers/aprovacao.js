@@ -34,9 +34,9 @@
         .controller('ConfirmarReprovacaoCtrl', ConfirmarReprovacaoController)
         .controller('SolicitarExcedenteCtrl', SolicitarExcedenteController);
 
-    AprovacaoController.$inject = ['$uibModal', 'Lancamentos'];
+    AprovacaoController.$inject = ['$uibModal', 'grades', 'lancamentos'];
 
-    function AprovacaoController($uibModal,Lancamentos) {
+    function AprovacaoController($uibModal, grades, lancamentos) {
 
         var _vm = this;
 
@@ -44,6 +44,7 @@
             Inicio: new Date(2016, 2, 1),
             Fim: new Date(2016, 2, 31)
         };
+        _vm.Grades = [];
         _vm.TodosSelecionados = false;
         _vm.Consultorias = [
             { Nome: '3Com' },
@@ -407,9 +408,16 @@
         run();
 
         function run(){
-            Lancamentos.get().then(function(resultado){
-                _vm.Lancamentos = resultado.data;
-            })
+            // Lancamentos.get().then(function(resultado){
+            //     _vm.Lancamentos = resultado.data;
+            // });
+            obterGrades();
+        }
+
+        function obterGrades(){
+            grades.get().then(function(resultado){
+                _vm.Grades = resultado.data;
+            });
         }
 
         function centroCustoValido(centroCusto, Unidade) {
