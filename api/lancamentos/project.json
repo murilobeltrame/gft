@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "Mapster":"2.6.0",
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"

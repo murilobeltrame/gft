@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace lancamentos.Models
 {
-    public partial class LancamentoViewModel
+    public partial class LancamentoDTO
     {
         public int IdLancamento { get; set; }
         public string NrRequisicao { get; set; }
@@ -14,8 +14,8 @@ namespace lancamentos.Models
         public int? MinutoLancamento { get; set; }
         public int? IdGrade { get; set; }
 
-        public virtual ApontamentoViewModel Apontamento { get; set; }
-        public virtual AreaViewModel Area { get; set; }
-        public virtual TipoLancamentoViewModel Tipo { get; set; }
+        public virtual ApontamentoDTO Apontamento { get; set; }
+        public virtual AreaDTO Area { get; set; }
+        public virtual TipoLancamentoDTO Tipo { get; set; }
     }
 }
