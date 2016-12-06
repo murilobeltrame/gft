@@ -1,7 +1,20 @@
-namespace GFT.API.Lancamentos.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace lancamentos.Models
 {
-    public class Consultoria
+    public partial class Consultoria
     {
-        public string Nome { get; set; }
+        public Consultoria()
+        {
+            Terceiro = new HashSet<Terceiro>();
+        }
+
+        public int IdConsultoria { get; set; }
+        public string NmConsultoria { get; set; }
+        public string CdConsultoria { get; set; }
+        public DateTime? DtAlt { get; set; }
+
+        public virtual ICollection<Terceiro> Terceiro { get; set; }
     }
 }
