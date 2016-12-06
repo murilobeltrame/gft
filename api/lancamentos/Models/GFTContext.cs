@@ -17,7 +17,9 @@ namespace lancamentos.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseSqlServer(@"Server=172.16.99.80,56001;Database=GFT;User Id=appGFT;Password=appGFTdev;");
+            optionsBuilder.UseSqlServer(
+                @"Server=172.16.99.80,56001;Database=GFT;User Id=appGFT;Password=appGFTdev;",
+                b => b.UseRowNumberForPaging());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
