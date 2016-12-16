@@ -1,9 +1,13 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 
-namespace grades
+namespace ponto
 {
     public class Program
     {
@@ -22,7 +26,6 @@ namespace grades
                 })
                 .UseUrls("http://0.0.0.0:8080", "https://0.0.0.0:8081")
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                //.UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
 
